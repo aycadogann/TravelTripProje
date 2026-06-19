@@ -1,6 +1,6 @@
 ﻿@model TravelTripProje.Models.Sınıflar.BlogYorum
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "BlogDetay";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <!--
@@ -12,6 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
+    <title>Personal Blog a Blogging Category Flat Bootstarp  Responsive Website Template | Single :: w3layouts</title>
     <link href="~/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="~/web2/css/style.css" rel='stylesheet' type='text/css' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,53 +23,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!----webfonts---->
     <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--end slider -->
+ 
 </head>
 <body>
     <!---header---->
     <div class="header">
-        <div class="container">
-            <div class="clearfix"></div>
-        </div>
+
     </div>
     <!--/header-->
     <div class="single">
         <div class="container">
             <div class="col-md-8 single-main">
                 <div class="single-grid">
-
                     @foreach (var item in Model.GetBlogs)
                     {
                         <img src="@item.BlogFotograf" alt="" style="margin-bottom:20px" />
-                        <a href="/Blog/BlogDetay/@item.ID">@item.Baslik</a>
-                        <p>@item.Aciklama</p>
+                        <h2> @item.Baslik </h2>
+                        <p>
+                            @item.Aciklama
+                        </p>
                     }
-                    <br /> <br />
                 </div>
-            </div>
 
-            <div class="col-md-4 side-content">
-                <div class="recent">
-                    <h3>Son Bloglar</h3>
-                    @foreach (var item in Model.AllBlogs)
-                    {
-                        <ul>
-                            <li><a href="/Blog/BlogDetay/@item.ID">@item.Baslik</a></li>
-                        </ul>
-                    }
-
-                </div>
-                <div class="comments">
-                    <h3>Son Yorumlar</h3>
-                    <ul>
-
-                        <li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
+                @foreach (var item in Model.GetYorumlars)
+                {
+                    <ul class="comment-list">
+                        <li>
+                            <img src="~/web2/images/avatar.png" class="img-responsive" alt="">
+                            <div class="desc">
+                                <p>@item.KullaniciAdi :  @item.Yorum </p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
                     </ul>
-                </div>
-                <div class="clearfix"></div>
+                }
 
-                <div class="clearfix"></div>
+                <div class="content-form">
+                    <h3>Bir Yorum Yapın</h3>
+                    <form>
+                        <input type="text" placeholder="Kullanıcı Adı" required />
+                        <input type="text" placeholder="Mail Adresi" required />
+                        <textarea placeholder="Yorum"></textarea>
+                        <input type="submit" value="Gönder" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+
+
