@@ -30,8 +30,9 @@ namespace TravelTripProje.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult YorumYap()
+        public PartialViewResult YorumYap(int id)
         {
+            ViewBag.deger = id;
             return PartialView();
         }
 
