@@ -31,7 +31,7 @@ namespace TravelTripProje.Controllers
 
         public PartialViewResult Partial3()
         {
-            var deger = context.Blogs.ToList();
+            var deger = context.Blogs.Take(10).ToList();
             return PartialView(deger);
         }
         public PartialViewResult Partial4()
